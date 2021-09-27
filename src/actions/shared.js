@@ -4,16 +4,16 @@ import { receiveUsers } from '../actions/users'
 import { setAuthedUser } from '../actions/authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 
-const AUTHER_ID = 'tyletylermcginnisrmcginnis'
 
 export function handleInitialData() {
     return (dispatch) => {
         dispatch(showLoading())
         return getInitialData()
             .then(({ users, questions }) => {
+                console.log(users)
                 dispatch(receiveQuestions(questions))
                 dispatch(receiveUsers(users))
-                dispatch(setAuthedUser(AUTHER_ID))
+                dispatch(setAuthedUser(users.johndoe))
                 dispatch(hideLoading())
             })
     }

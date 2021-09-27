@@ -1,8 +1,8 @@
-export const AUTHED_USER_ID = 'AUTHED_USER_ID'
+export const AUTHED_USER = 'AUTHED_USER'
 
-export function setAuthedUser(id) {
+export function setAuthedUser(authedUser) {
     return {
-        type: AUTHED_USER_ID,
-        id
+        type: AUTHED_USER,
+        authedUser
     }
 }
