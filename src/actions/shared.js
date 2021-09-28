@@ -10,7 +10,6 @@ export function handleInitialData() {
         dispatch(showLoading())
         return getInitialData()
             .then(({ users, questions }) => {
-                console.log(users)
                 dispatch(receiveQuestions(questions))
                 dispatch(receiveUsers(users))
                 dispatch(setAuthedUser(users.johndoe))
