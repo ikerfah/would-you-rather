@@ -6,26 +6,28 @@ import './App.css';
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading-bar';
 import HomePage from './components/HomePage';
-
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Nav from './components/Nav';
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
   }
   render() {
     return (
-      <div className="App">
+      <Router>
         <LoadingBar />
-        <div>
         {this.props.loading === true
           ? null
-          : <HomePage />}
-        </div>
-      </div>
+          : <div className='container'>
+            <Nav />
+            <HomePage />
+          </div>}
+      </Router>
     )
   }
 }
 
-function mapStateToProps ({ authedUser }) {
+function mapStateToProps({ authedUser }) {
   return {
     loading: authedUser === null
   }
