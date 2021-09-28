@@ -4,7 +4,7 @@ import { formatDate } from '../utils/_DATA';
 
 class Question extends React.Component {
     render() {
-        const { question, author, isDetailsPage } = this.props
+        const { question, author, isDetailsPage, authedUser} = this.props
         console.log("OH! = ", this.props)
 
         if (question === null) {
@@ -37,11 +37,11 @@ class Question extends React.Component {
                     </div>
                     <div className='question-options'>
                         <div>
-                            <input id='optionOne' type='checkbox' name='optionOne' disabled={!isDetailsPage} />
+                            <input id='optionOne' type='checkbox' name='optionOne' disabled={!isDetailsPage} checked={optionOne.votes.includes(authedUser.id)} />
                             <label for='optionOne'>{optionOne.text}</label>
                         </div>
                         <div>
-                            <input id='optionTwo' type='checkbox' name='optionTwo' disabled={!isDetailsPage}/>
+                            <input id='optionTwo' type='checkbox' name='optionTwo' disabled={!isDetailsPage} checked={optionTwo.votes.includes(authedUser.id)} />
                             <label for='optionTwo'>{optionTwo.text}</label>
                         </div>
                     </div>
@@ -49,12 +49,13 @@ class Question extends React.Component {
             </div>)
     }
 }
-function mapStateToProps({ users, questions }, { id , isDetailsPage }) {
+function mapStateToProps({ authedUser, users, questions }, { id, isDetailsPage }) {
     const question = questions[id]
     return {
+        'authedUser': authedUser,
         'author': users[question.author],
         'question': question,
-        'isDetailsPage' : isDetailsPage
+        'isDetailsPage': isDetailsPage
     }
 
 }
