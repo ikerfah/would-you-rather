@@ -8,9 +8,6 @@ import { Avatar } from './Avatar';
 
 class Question extends React.Component {
 
-    state = {
-        toHome: false
-    }
     onChange = (e) => {
 
         const { dispatch, question } = this.props
@@ -26,10 +23,6 @@ class Question extends React.Component {
     }
 
     render() {
-        const { toHome } = this.state
-        if (toHome === true) {
-            return <Redirect to="/" />
-        }
 
         const { question, author, isDetailsPage, authedUser } = this.props
 
@@ -49,6 +42,7 @@ class Question extends React.Component {
             avatarURL,
         } = author
 
+        const isAnswered = optionOne.votes.includes(authedUser.id) || optionTwo.votes.includes(authedUser.id)
         return (
             <Link to={`/questions/${id}`} className='question'>
                 <Avatar
@@ -62,11 +56,11 @@ class Question extends React.Component {
                     </div>
                     <div className='question-options'>
                         <div>
-                            <input id='optionOne' onChange={this.onChange} value='optionOne' type='checkbox' name='optionOne' disabled={!isDetailsPage} checked={optionOne.votes.includes(authedUser.id)} />
+                            <input id='optionOne' onChange={this.onChange} value='optionOne' type='checkbox' name='optionOne' disabled={!isDetailsPage || isAnswered} checked={optionOne.votes.includes(authedUser.id)} />
                             <label for='optionOne'>{optionOne.text}</label>
                         </div>
                         <div>
-                            <input id='optionTwo' onChange={this.onChange} value='optionTwo' type='checkbox' name='optionTwo' disabled={!isDetailsPage} checked={optionTwo.votes.includes(authedUser.id)} />
+                            <input id='optionTwo' onChange={this.onChange} value='optionTwo' type='checkbox' name='optionTwo' disabled={!isDetailsPage || isAnswered} checked={optionTwo.votes.includes(authedUser.id)} />
                             <label for='optionTwo'>{optionTwo.text}</label>
                         </div>
                     </div>
