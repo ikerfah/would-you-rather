@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { handleSaveQuestionAnswer } from '../actions/questions';
 import { formatDate } from '../utils/_DATA';
 import { Redirect } from 'react-router';
+import { Avatar } from './Avatar';
 
 class Question extends React.Component {
 
@@ -50,10 +51,9 @@ class Question extends React.Component {
 
         return (
             <Link to={`/questions/${id}`} className='question'>
-                <img
-                    src={avatarURL}
-                    alt={`Avatar of ${name}`}
-                    className='avatar'
+                <Avatar
+                    avatarURL={avatarURL}
+                    altName={name}
                 />
                 <div className='question-info'>
                     <div>
