@@ -1,11 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { handleSaveQuestionAnswer } from '../actions/questions';
 import { formatDate } from '../utils/_DATA';
+import { Redirect } from 'react-router';
 
 class Question extends React.Component {
+
+    state = {
+        toHome: false
+    }
+    onChange = (e) => {
+
+        const { dispatch, question } = this.props
+
+        dispatch(handleSaveQuestionAnswer({
+            questionId: question.id,
+            answer: e.target.value
+        }))
+
+        this.setState(() => ({
+            toHome: true
+        }))
+    }
+
     render() {
-        const { question, author, isDetailsPage, authedUser} = this.props
+        const { toHome } = this.state
+        if (toHome === true) {
+            return <Redirect to="/" />
+        }
+
+        const { question, author, isDetailsPage, authedUser } = this.props
 
         if (question === null) {
             return <p3>Question not found</p3>
@@ -37,11 +62,11 @@ class Question extends React.Component {
                     </div>
                     <div className='question-options'>
                         <div>
-                            <input id='optionOne' type='checkbox' name='optionOne' disabled={!isDetailsPage} checked={optionOne.votes.includes(authedUser.id)} />
+                            <input id='optionOne' onChange={this.onChange} value='optionOne' type='checkbox' name='optionOne' disabled={!isDetailsPage} checked={optionOne.votes.includes(authedUser.id)} />
                             <label for='optionOne'>{optionOne.text}</label>
                         </div>
                         <div>
-                            <input id='optionTwo' type='checkbox' name='optionTwo' disabled={!isDetailsPage} checked={optionTwo.votes.includes(authedUser.id)} />
+                            <input id='optionTwo' onChange={this.onChange} value='optionTwo' type='checkbox' name='optionTwo' disabled={!isDetailsPage} checked={optionTwo.votes.includes(authedUser.id)} />
                             <label for='optionTwo'>{optionTwo.text}</label>
                         </div>
                     </div>
