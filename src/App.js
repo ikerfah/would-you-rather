@@ -8,6 +8,9 @@ import LoadingBar from 'react-redux-loading-bar';
 import HomePage from './components/HomePage';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Nav from './components/Nav';
+import QuestionDetails from './components/QuestionDetails';
+import AddQuestion from './components/AddQuestion';
+import Leaderboard from './components/Leaderboard';
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
@@ -16,12 +19,18 @@ class App extends Component {
     return (
       <Router>
         <LoadingBar />
-        {this.props.loading === true
-          ? null
-          : <div className='container'>
-            <Nav />
-            <HomePage />
-          </div>}
+        <div className='container'>
+        <Nav />
+          {this.props.loading === true
+            ? null
+            : <div>
+              <Route path='/' exact component={HomePage} />
+              <Route path='/questions/:id' component={QuestionDetails} />
+              <Route path='/add' component={AddQuestion} />
+              <Route path='/leaderboard' component={Leaderboard} />
+            </div>
+          }
+        </div>
       </Router>
     )
   }
