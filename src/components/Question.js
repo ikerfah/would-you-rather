@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { formatDate } from '../utils/_DATA';
 
 class Question extends React.Component {
     render() {
         const { question, author, isDetailsPage, authedUser} = this.props
-        console.log("OH! = ", this.props)
 
         if (question === null) {
             return <p3>Question not found</p3>
@@ -24,7 +24,7 @@ class Question extends React.Component {
         } = author
 
         return (
-            <div className='question'>
+            <Link to={`/questions/${id}`} className='question'>
                 <img
                     src={avatarURL}
                     alt={`Avatar of ${name}`}
@@ -46,7 +46,7 @@ class Question extends React.Component {
                         </div>
                     </div>
                 </div>
-            </div>)
+            </Link>)
     }
 }
 function mapStateToProps({ authedUser, users, questions }, { id, isDetailsPage }) {
