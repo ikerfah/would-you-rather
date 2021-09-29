@@ -25,9 +25,9 @@ class Nav extends Component {
             </NavLink>
           </li>
 
-          <li className='authed-user-li'>
-              <span className='logged-as'>Logged as </span><span>{authedUser.name}</span>
-          </li>
+          {authedUser && <li className='authed-user-li'>
+            <span className='logged-as'>Logged as </span><span>{authedUser.name}</span>
+          </li>}
         </ul>
       </nav>
     )
