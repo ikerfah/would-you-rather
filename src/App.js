@@ -11,6 +11,7 @@ import Nav from './components/Nav';
 import QuestionDetails from './components/QuestionDetails';
 import AddQuestion from './components/AddQuestion';
 import Leaderboard from './components/Leaderboard';
+import SelectUser from './components/SelectUser';
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
@@ -20,10 +21,11 @@ class App extends Component {
       <Router>
         <LoadingBar />
         <div className='container'>
-        <Nav />
-          {this.props.loading === true
-            ? null
+
+          {this.props.authedUser === null
+            ? <SelectUser />
             : <div>
+              <Nav />
               <Route path='/' exact component={HomePage} />
               <Route path='/questions/:id' component={QuestionDetails} />
               <Route path='/add' component={AddQuestion} />
@@ -38,7 +40,8 @@ class App extends Component {
 
 function mapStateToProps({ authedUser }) {
   return {
-    loading: authedUser === null
+    loading: authedUser === null,
+    authedUser
   }
 }
 export default connect(mapStateToProps)(App);
