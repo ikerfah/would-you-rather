@@ -140,3 +140,9 @@ a {
     font-size: 1.2em;
     font-weight: bold;
 }
+
+.vote-statistics {
+    font-size: 0.7;
+    font-style: italic;
+    color: #aaa;
+}
