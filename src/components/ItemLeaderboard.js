@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { handleSaveQuestionAnswer } from '../actions/questions';
-import { formatDate } from '../utils/_DATA';
-import { Redirect } from 'react-router';
 import { Avatar } from './Avatar';
 
-class ItemLeaderboard extends React.Component {
+class ItemLeaderboard extends Component {
 
     render() {
 
@@ -33,10 +29,10 @@ class ItemLeaderboard extends React.Component {
                     </div>
                 </div>
             </div>
-            )
+        )
     }
 }
-function mapStateToProps({  users }, {userId}) {
+function mapStateToProps({ users }, { userId }) {
     const user = users[userId]
     return {
         user

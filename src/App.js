@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import logo from './logo.svg';
 import { handleInitialData } from './actions/shared'
 import './App.css';
 import { connect } from 'react-redux';

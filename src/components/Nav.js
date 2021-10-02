@@ -5,8 +5,8 @@ import { logout } from '../actions/authedUser'
 
 class Nav extends Component {
 
-  handleLogout = ()=>{
-    const {dispatch} = this.props
+  handleLogout = () => {
+    const { dispatch } = this.props
 
     dispatch(logout())
   }

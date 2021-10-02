@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { setAuthedUser } from '../actions/authedUser';
-import { handleSaveQuestionAnswer } from '../actions/questions';
-import { formatDate } from '../utils/_DATA';
 import { Avatar } from './Avatar';
 
 class ItemUser extends Component {
 
     onClick = (e) => {
 
-        const { dispatch , user} = this.props
+        const { dispatch, user } = this.props
 
         dispatch(setAuthedUser(user))
     }

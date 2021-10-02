@@ -4,7 +4,7 @@ import { formatDate } from '../utils/_DATA';
 
 const OPTION_ONE_KEY = 'optionOne'
 const OPTION_TWO_KEY = 'optionTwo'
-class AnsweredQuestion extends React.Component {
+class AnsweredQuestion extends Component {
     render() {
 
         const {
@@ -21,7 +21,6 @@ class AnsweredQuestion extends React.Component {
         }
 
         const {
-            id,
             timestamp,
             optionOne,
             optionTwo
@@ -37,11 +36,11 @@ class AnsweredQuestion extends React.Component {
                     <div className='question-options'>
                         <div>
                             <input id='optionOne' onChange={this.onChange} value='optionOne' type='checkbox' disabled={true} checked={optionOne.votes.includes(authedUser.id)} />
-                            <label for='optionOne'>{optionOne.text}  <span className='vote-statistics'>{numberOfUsersVotedForOptionOne} Vote{numberOfUsersVotedForOptionOne > 1 ? 's' : ''}, {percentageOfPeopleWhoVotedForOptionOne}%</span></label>
+                            <label htmlFor='optionOne'>{optionOne.text}  <span className='vote-statistics'>{numberOfUsersVotedForOptionOne} Vote{numberOfUsersVotedForOptionOne > 1 ? 's' : ''}, {percentageOfPeopleWhoVotedForOptionOne}%</span></label>
                         </div>
                         <div>
                             <input id='optionTwo' onChange={this.onChange} value='optionTwo' type='checkbox' disabled={true} checked={optionTwo.votes.includes(authedUser.id)} />
-                            <label for='optionTwo'>{optionTwo.text} <span className='vote-statistics'>{numberOfUsersVotedForOptionTwo} Vote{numberOfUsersVotedForOptionTwo > 1 ? 's' : ''}, {percentageOfPeopleWhoVotedForOptionTwo}%</span></label>
+                            <label htmlFor='optionTwo'>{optionTwo.text} <span className='vote-statistics'>{numberOfUsersVotedForOptionTwo} Vote{numberOfUsersVotedForOptionTwo > 1 ? 's' : ''}, {percentageOfPeopleWhoVotedForOptionTwo}%</span></label>
                         </div>
                     </div>
                 </div>

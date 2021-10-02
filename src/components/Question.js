@@ -51,11 +51,11 @@ class Question extends Component {
                     <div className='question-options'>
                         <div>
                             <input id='optionOne' onChange={this.onChange} value='optionOne' type='checkbox' name='optionOne' disabled={!isDetailsPage} checked={optionOne.votes.includes(authedUser.id)} />
-                            <label for='optionOne'>{optionOne.text}</label>
+                            <label htmlFor='optionOne'>{optionOne.text}</label>
                         </div>
                         <div>
                             <input id='optionTwo' onChange={this.onChange} value='optionTwo' type='checkbox' name='optionTwo' disabled={!isDetailsPage} checked={optionTwo.votes.includes(authedUser.id)} />
-                            <label for='optionTwo'>{optionTwo.text}</label>
+                            <label htmlFor='optionTwo'>{optionTwo.text}</label>
                         </div>
                     </div>
                 </div>
