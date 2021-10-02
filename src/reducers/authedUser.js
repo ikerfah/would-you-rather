@@ -1,4 +1,4 @@
-import { AUTHED_USER } from '../actions/authedUser'
+import { AUTHED_USER, LOGOUT } from '../actions/authedUser'
 import { SAVE_QUESTION_ANSWER } from '../actions/questions'
 
 export default function authedUser(state = null, action) {
@@ -13,6 +13,8 @@ export default function authedUser(state = null, action) {
                     [action.qid]: action.answer
                 }
             }
+        case LOGOUT:
+            return null
         default:
             return state
     }

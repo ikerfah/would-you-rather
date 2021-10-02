@@ -98,6 +98,12 @@ input:disabled {
     font-size: 0.5em;
 }
 
+.logout {
+    font-size: 0.4em;
+    color: red;
+    cursor: pointer;
+}
+
 .test{
     background-color: red;
 }
