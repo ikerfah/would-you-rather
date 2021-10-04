@@ -5,12 +5,13 @@ import './App.css';
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading-bar';
 import HomePage from './components/HomePage';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Nav from './components/Nav';
 import QuestionDetails from './components/QuestionDetails';
 import AddQuestion from './components/AddQuestion';
 import Leaderboard from './components/Leaderboard';
 import SelectUser from './components/SelectUser';
+import NoMatchPage from './components/NoMatchPage';
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
@@ -25,10 +26,13 @@ class App extends Component {
             ? <SelectUser />
             : <div>
               <Nav />
-              <Route path='/' exact component={HomePage} />
-              <Route path='/questions/:id' component={QuestionDetails} />
-              <Route path='/add' component={AddQuestion} />
-              <Route path='/leaderboard' component={Leaderboard} />
+              <Switch>
+                <Route path='/' exact component={HomePage} />
+                <Route path='/questions/:id' component={QuestionDetails} />
+                <Route path='/add' component={AddQuestion} />
+                <Route path='/leaderboard' component={Leaderboard} />
+                <Route component={NoMatchPage} />
+              </Switch>
             </div>
           }
         </div>
